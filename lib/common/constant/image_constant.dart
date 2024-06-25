@@ -3,7 +3,7 @@ class ImageConstant {
 
   static String navDashboard = '$imagePath/ic_nav_dashboard.png';
 
-  static String navFavorite = '$imagePath/ic_nav_favorite.png';
+  static String navFavourite = '$imagePath/ic_nav_favourite.png';
 
   static String navSetting = '$imagePath/ic_nav_setting.png';
 }

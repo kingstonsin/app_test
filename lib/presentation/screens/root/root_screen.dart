@@ -20,13 +20,11 @@ class _RootScreenState extends State<RootScreen> {
       builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: true,
-          // backgroundColor: appTheme.backgroundColor, //TODO styling
           appBar: AppBar(
             title: Text(
               _getTitle(state.navbarItem),
             ),
           ),
-
           bottomNavigationBar: _buildBottomNav(state: state),
           body: _buildBody(state.navbarItem),
         );
@@ -85,7 +83,7 @@ class _RootScreenState extends State<RootScreen> {
       List.generate(3, (index) {
         final Map bottomMenuMap = {
           l10n().dashboard: ImageConstant.navDashboard,
-          l10n().favorite: ImageConstant.navFavorite,
+          l10n().favourite: ImageConstant.navFavourite,
           l10n().setting: ImageConstant.navSetting,
         };
 
