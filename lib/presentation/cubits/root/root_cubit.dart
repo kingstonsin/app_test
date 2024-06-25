@@ -9,15 +9,12 @@ class RootCubit extends Cubit<RootState> {
         return emit(
           state.copyWith(index: index, navbarItem: NavbarItem.dashboard),
         );
+
       case 1:
-        return emit(
-          state.copyWith(index: index, navbarItem: NavbarItem.list),
-        );
-      case 2:
         return emit(
           state.copyWith(index: index, navbarItem: NavbarItem.favourite),
         );
-      case 3:
+      case 2:
         return emit(
           state.copyWith(index: index, navbarItem: NavbarItem.setting),
         );

@@ -1,4 +1,4 @@
-enum NavbarItem { dashboard, list, favourite, setting }
+enum NavbarItem { dashboard, favourite, setting }
 
 class RootState {
   final NavbarItem navbarItem;

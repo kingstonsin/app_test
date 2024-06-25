@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/common/constant/image_constant.dart';
+import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/presentation/cubits/root/root_cubit.dart';
 import 'package:test_app/presentation/cubits/root/root_state.dart';
 import 'package:test_app/presentation/widgets/custom_image_widget.dart';
@@ -34,7 +35,6 @@ class _RootScreenState extends State<RootScreen> {
         switch (state.navbarItem) {
           //TODO fetch data when changing tab
           case NavbarItem.dashboard:
-          case NavbarItem.list:
           case NavbarItem.favourite:
           case NavbarItem.setting:
           // context.read<SongListBloc>().add(FetchList()); //TODO
@@ -47,7 +47,6 @@ class _RootScreenState extends State<RootScreen> {
   Widget _buildBody(NavbarItem navbarItem) {
     switch (navbarItem) {
       case NavbarItem.dashboard:
-      case NavbarItem.list:
       case NavbarItem.favourite:
       case NavbarItem.setting:
         return SizedBox(); //TODO
@@ -58,8 +57,7 @@ class _RootScreenState extends State<RootScreen> {
     switch (navbarItem) {
       case NavbarItem.dashboard:
         return 'Dashboard';
-      case NavbarItem.list:
-        return 'Music list';
+
       case NavbarItem.favourite:
         return 'Favourite';
       case NavbarItem.setting:
@@ -84,12 +82,11 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   List<BottomNavigationBarItem> _buildNavItems({required RootState state}) =>
-      List.generate(4, (index) {
+      List.generate(3, (index) {
         final Map bottomMenuMap = {
-          'dashboard': ImageConstant.navDashboard,
-          'music list': ImageConstant.navMusicList,
-          'favourate': ImageConstant.navFavorate,
-          'setting': ImageConstant.navSetting,
+          l10n().dashboard: ImageConstant.navDashboard,
+          l10n().favorite: ImageConstant.navFavorite,
+          l10n().setting: ImageConstant.navSetting,
         };
 
         // final Map activeBottomMenuMap = {
