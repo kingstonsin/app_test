@@ -4,6 +4,7 @@ import 'package:test_app/common/constant/image_constant.dart';
 import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/presentation/cubits/root/root_cubit.dart';
 import 'package:test_app/presentation/cubits/root/root_state.dart';
+import 'package:test_app/presentation/screens/root/setting_screen.dart';
 import 'package:test_app/presentation/widgets/custom_image_widget.dart';
 
 class RootScreen extends StatefulWidget {
@@ -33,9 +34,9 @@ class _RootScreenState extends State<RootScreen> {
         switch (state.navbarItem) {
           //TODO fetch data when changing tab
           case NavbarItem.dashboard:
+          // context.read<SongListBloc>().add(FetchList()); //TODO
           case NavbarItem.favourite:
           case NavbarItem.setting:
-          // context.read<SongListBloc>().add(FetchList()); //TODO
           default:
         }
       },
@@ -45,9 +46,11 @@ class _RootScreenState extends State<RootScreen> {
   Widget _buildBody(NavbarItem navbarItem) {
     switch (navbarItem) {
       case NavbarItem.dashboard:
+        return SizedBox();
       case NavbarItem.favourite:
+        return SizedBox();
       case NavbarItem.setting:
-        return SizedBox(); //TODO
+        return const SettingScreen();
     }
   }
 

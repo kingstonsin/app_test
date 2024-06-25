@@ -1,5 +1,10 @@
 {
   "dashboard": "主页",
+  "english": "英语",
   "favourite": "最爱",
-  "setting": "设置"
+  "language_setting_decs": "设置您的语言",
+  "language_setting_title": "语言",
+  "setting": "设置",
+  "simplified_chinese": "简体中文",
+  "traditional_chinese": "繁体中文"
 }

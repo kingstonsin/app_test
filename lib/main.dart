@@ -33,38 +33,41 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocaleCubit, LocaleState>(
-      builder: (context, localeState) {
-        return MaterialApp.router(
-          builder: (context, child) {
-            return MediaQuery(
-              data: MediaQuery.of(context)
-                  .copyWith(textScaler: TextScaler.noScaling),
-              child: FlutterEasyLoading(
-                  child: SafeArea(
-                top: false,
-                bottom: false,
-                child: child ?? const SizedBox.shrink(),
-              )),
-            );
-          },
-          routerConfig: goRouterConfig,
-          locale: localeState.locale!.getLocale,
-          theme: theme,
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const <Locale>[
-            Locale('en'),
-            Locale.fromSubtags(languageCode: 'zh', countryCode: 'TW'),
-            Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
-          ],
-          debugShowCheckedModeBanner: false,
-        );
-      },
+    return BlocProvider(
+      create: (context) => LocaleCubit(),
+      child: BlocBuilder<LocaleCubit, LocaleState>(
+        builder: (context, localeState) {
+          return MaterialApp.router(
+            builder: (context, child) {
+              return MediaQuery(
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: TextScaler.noScaling),
+                child: FlutterEasyLoading(
+                    child: SafeArea(
+                  top: false,
+                  bottom: false,
+                  child: child ?? const SizedBox.shrink(),
+                )),
+              );
+            },
+            routerConfig: goRouterConfig,
+            locale: localeState.locale!.getLocale,
+            theme: theme,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const <Locale>[
+              Locale('en'),
+              Locale.fromSubtags(languageCode: 'zh', countryCode: 'TW'),
+              Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
+            ],
+            debugShowCheckedModeBanner: false,
+          );
+        },
+      ),
     );
   }
 }

@@ -43,13 +43,13 @@ class ThemeHelper {
       visualDensity: VisualDensity.standard,
       colorScheme: colorScheme,
       textTheme: TextThemes.textTheme(colorScheme),
-      scaffoldBackgroundColor: appTheme.accentColor,
+      scaffoldBackgroundColor: appTheme.backgroundColor,
       appBarTheme: const AppBarTheme(
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: appTheme.primaryColor,
+          backgroundColor: appTheme.backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
           ),
@@ -78,7 +78,7 @@ class ThemeHelper {
       dividerTheme: DividerThemeData(
         thickness: 1,
         space: 1,
-        color: appTheme.accentColor,
+        color: appTheme.secondaryColor,
       ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: Colors.black.withOpacity(0.8),
@@ -156,9 +156,10 @@ class PrimaryColors {
   Color get accentColor => const Color(0xFFFFFFFF);
   Color get secondaryColor => const Color(0xFF191414);
   Color get favoriteColor => const Color(0xFFFF6B6B);
-  Color get textColor => const Color(0xFFFFFFFF);
+  Color get textColor => const Color(0xFF191414);
   Color get iconColor => const Color(0xFF1DB954);
   Color get bottomNavBarColor => const Color(0xFF191414);
+  Color get backgroundColor => const Color(0xFFFFFBE9);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

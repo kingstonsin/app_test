@@ -8,9 +8,9 @@ enum AppLocale {
 
 extension AppLocaleExtension on AppLocale {
   Locale get getLocale => switch (this) {
-        AppLocale.EN => Locale("en", "US"),
-        AppLocale.ZH_TW => Locale("zh", "TW"),
-        AppLocale.ZH_CN => Locale("zh", "CN"),
+        AppLocale.EN => const Locale("en", "US"),
+        AppLocale.ZH_TW => const Locale("zh", "TW"),
+        AppLocale.ZH_CN => const Locale("zh", "CN"),
       };
 
   String get title => switch (this) {
