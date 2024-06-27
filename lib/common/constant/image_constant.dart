@@ -8,4 +8,8 @@ class ImageConstant {
   static String navSetting = '$imagePath/ic_nav_setting.png';
 
   static String tick = '$imagePath/ic_tick.png';
+
+  static String search = '$imagePath/ic_search.png';
+
+  static String arrowDown = '$imagePath/ic_arrow_down.png';
 }

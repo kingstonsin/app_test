@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_app/common/enums/locale_enum.dart';
 import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/presentation/cubits/locale/locale_cubit.dart';
 import 'package:test_app/presentation/cubits/setting/setting_cubit.dart';

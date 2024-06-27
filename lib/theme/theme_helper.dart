@@ -164,4 +164,3 @@ class PrimaryColors {
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();
 ThemeData get theme => ThemeHelper().themeData();
-// PinThemeData get pinCodeTheme => ThemeHelper().pinThemeData();

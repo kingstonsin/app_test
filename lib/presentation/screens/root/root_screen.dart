@@ -4,6 +4,7 @@ import 'package:test_app/common/constant/image_constant.dart';
 import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/presentation/cubits/root/root_cubit.dart';
 import 'package:test_app/presentation/cubits/root/root_state.dart';
+import 'package:test_app/presentation/screens/root/dash_board_screen.dart';
 import 'package:test_app/presentation/screens/root/setting_screen.dart';
 import 'package:test_app/presentation/widgets/custom_image_widget.dart';
 
@@ -46,7 +47,7 @@ class _RootScreenState extends State<RootScreen> {
   Widget _buildBody(NavbarItem navbarItem) {
     switch (navbarItem) {
       case NavbarItem.dashboard:
-        return SizedBox();
+        return const DashboardScreen();
       case NavbarItem.favourite:
         return SizedBox();
       case NavbarItem.setting:
