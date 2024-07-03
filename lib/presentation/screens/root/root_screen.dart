@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/common/constant/image_constant.dart';
+import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/presentation/cubits/root/root_cubit.dart';
 import 'package:test_app/presentation/cubits/root/root_state.dart';
+import 'package:test_app/presentation/screens/root/dash_board_screen.dart';
+import 'package:test_app/presentation/screens/root/setting_screen.dart';
 import 'package:test_app/presentation/widgets/custom_image_widget.dart';
 
 class RootScreen extends StatefulWidget {
@@ -19,13 +22,11 @@ class _RootScreenState extends State<RootScreen> {
       builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: true,
-          // backgroundColor: appTheme.backgroundColor, //TODO styling
           appBar: AppBar(
             title: Text(
               _getTitle(state.navbarItem),
             ),
           ),
-
           bottomNavigationBar: _buildBottomNav(state: state),
           body: _buildBody(state.navbarItem),
         );
@@ -34,10 +35,9 @@ class _RootScreenState extends State<RootScreen> {
         switch (state.navbarItem) {
           //TODO fetch data when changing tab
           case NavbarItem.dashboard:
-          case NavbarItem.list:
+          // context.read<SongListBloc>().add(FetchList()); //TODO
           case NavbarItem.favourite:
           case NavbarItem.setting:
-          // context.read<SongListBloc>().add(FetchList()); //TODO
           default:
         }
       },
@@ -47,10 +47,11 @@ class _RootScreenState extends State<RootScreen> {
   Widget _buildBody(NavbarItem navbarItem) {
     switch (navbarItem) {
       case NavbarItem.dashboard:
-      case NavbarItem.list:
+        return const DashboardScreen();
       case NavbarItem.favourite:
+        return SizedBox();
       case NavbarItem.setting:
-        return SizedBox(); //TODO
+        return const SettingScreen();
     }
   }
 
@@ -58,8 +59,7 @@ class _RootScreenState extends State<RootScreen> {
     switch (navbarItem) {
       case NavbarItem.dashboard:
         return 'Dashboard';
-      case NavbarItem.list:
-        return 'Music list';
+
       case NavbarItem.favourite:
         return 'Favourite';
       case NavbarItem.setting:
@@ -84,12 +84,11 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   List<BottomNavigationBarItem> _buildNavItems({required RootState state}) =>
-      List.generate(4, (index) {
+      List.generate(3, (index) {
         final Map bottomMenuMap = {
-          'dashboard': ImageConstant.navDashboard,
-          'music list': ImageConstant.navMusicList,
-          'favourate': ImageConstant.navFavorate,
-          'setting': ImageConstant.navSetting,
+          l10n().dashboard: ImageConstant.navDashboard,
+          l10n().favourite: ImageConstant.navFavourite,
+          l10n().setting: ImageConstant.navSetting,
         };
 
         // final Map activeBottomMenuMap = {
