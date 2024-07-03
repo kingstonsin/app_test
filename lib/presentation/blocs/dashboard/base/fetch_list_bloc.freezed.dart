@@ -18,20 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FetchListEvent {
   int get offset => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
-  String get keyword => throw _privateConstructorUsedError;
+  String get terms => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int offset, int limit, String keyword) getData,
+    required TResult Function(int offset, int limit, String terms) getData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int offset, int limit, String keyword)? getData,
+    TResult? Function(int offset, int limit, String terms)? getData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int offset, int limit, String keyword)? getData,
+    TResult Function(int offset, int limit, String terms)? getData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ abstract class $FetchListEventCopyWith<$Res> {
           FetchListEvent value, $Res Function(FetchListEvent) then) =
       _$FetchListEventCopyWithImpl<$Res, FetchListEvent>;
   @useResult
-  $Res call({int offset, int limit, String keyword});
+  $Res call({int offset, int limit, String terms});
 }
 
 /// @nodoc
@@ -81,7 +81,7 @@ class _$FetchListEventCopyWithImpl<$Res, $Val extends FetchListEvent>
   $Res call({
     Object? offset = null,
     Object? limit = null,
-    Object? keyword = null,
+    Object? terms = null,
   }) {
     return _then(_value.copyWith(
       offset: null == offset
@@ -92,9 +92,9 @@ class _$FetchListEventCopyWithImpl<$Res, $Val extends FetchListEvent>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      keyword: null == keyword
-          ? _value.keyword
-          : keyword // ignore: cast_nullable_to_non_nullable
+      terms: null == terms
+          ? _value.terms
+          : terms // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -108,7 +108,7 @@ abstract class _$$GetDataEventImplCopyWith<$Res>
       __$$GetDataEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int offset, int limit, String keyword});
+  $Res call({int offset, int limit, String terms});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$GetDataEventImplCopyWithImpl<$Res>
   $Res call({
     Object? offset = null,
     Object? limit = null,
-    Object? keyword = null,
+    Object? terms = null,
   }) {
     return _then(_$GetDataEventImpl(
       offset: null == offset
@@ -135,9 +135,9 @@ class __$$GetDataEventImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
-      keyword: null == keyword
-          ? _value.keyword
-          : keyword // ignore: cast_nullable_to_non_nullable
+      terms: null == terms
+          ? _value.terms
+          : terms // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -147,18 +147,18 @@ class __$$GetDataEventImplCopyWithImpl<$Res>
 
 class _$GetDataEventImpl implements GetDataEvent {
   const _$GetDataEventImpl(
-      {required this.offset, required this.limit, required this.keyword});
+      {required this.offset, required this.limit, required this.terms});
 
   @override
   final int offset;
   @override
   final int limit;
   @override
-  final String keyword;
+  final String terms;
 
   @override
   String toString() {
-    return 'FetchListEvent.getData(offset: $offset, limit: $limit, keyword: $keyword)';
+    return 'FetchListEvent.getData(offset: $offset, limit: $limit, terms: $terms)';
   }
 
   @override
@@ -168,11 +168,11 @@ class _$GetDataEventImpl implements GetDataEvent {
             other is _$GetDataEventImpl &&
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.keyword, keyword) || other.keyword == keyword));
+            (identical(other.terms, terms) || other.terms == terms));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, offset, limit, keyword);
+  int get hashCode => Object.hash(runtimeType, offset, limit, terms);
 
   @JsonKey(ignore: true)
   @override
@@ -183,27 +183,27 @@ class _$GetDataEventImpl implements GetDataEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int offset, int limit, String keyword) getData,
+    required TResult Function(int offset, int limit, String terms) getData,
   }) {
-    return getData(offset, limit, keyword);
+    return getData(offset, limit, terms);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int offset, int limit, String keyword)? getData,
+    TResult? Function(int offset, int limit, String terms)? getData,
   }) {
-    return getData?.call(offset, limit, keyword);
+    return getData?.call(offset, limit, terms);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int offset, int limit, String keyword)? getData,
+    TResult Function(int offset, int limit, String terms)? getData,
     required TResult orElse(),
   }) {
     if (getData != null) {
-      return getData(offset, limit, keyword);
+      return getData(offset, limit, terms);
     }
     return orElse();
   }
@@ -241,14 +241,14 @@ abstract class GetDataEvent implements FetchListEvent {
   const factory GetDataEvent(
       {required final int offset,
       required final int limit,
-      required final String keyword}) = _$GetDataEventImpl;
+      required final String terms}) = _$GetDataEventImpl;
 
   @override
   int get offset;
   @override
   int get limit;
   @override
-  String get keyword;
+  String get terms;
   @override
   @JsonKey(ignore: true)
   _$$GetDataEventImplCopyWith<_$GetDataEventImpl> get copyWith =>

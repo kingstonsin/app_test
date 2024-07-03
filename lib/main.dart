@@ -20,6 +20,8 @@ FutureOr<void> main() async {
   setupGetIt();
   EasyLoading.instance.userInteractions = false;
 
+  dioService.initializeDio();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((value) {

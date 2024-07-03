@@ -20,8 +20,8 @@ extension AppLocaleExtension on AppLocale {
       };
 
   String get apiLanguageCode => switch (this) {
-        AppLocale.EN => "en",
-        AppLocale.ZH_TW => "zh-TW",
-        AppLocale.ZH_CN => "zh-CN",
+        AppLocale.EN => "en_us",
+        AppLocale.ZH_TW => "zh_tw",
+        AppLocale.ZH_CN => "zh_cn",
       };
 }

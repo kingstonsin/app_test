@@ -13,7 +13,8 @@ class DashboardScreen extends StatelessWidget {
       child: SafeArea(
         child: BlocProvider<FetchListBloc>(
           create: (context) => FetchListBloc(
-            (offset, limit, keyword) => songListRepoImp.getSongList(20, 20, ''),
+            (offset, limit, keyword) => songListRepoImp.getSongList(
+                offset: '0', limit: '20', terms: 'Eminem'),
           ),
           child: BlocConsumer<FetchListBloc, FetchListState>(
             builder: (context, state) {

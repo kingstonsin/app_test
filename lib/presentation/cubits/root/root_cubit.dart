@@ -3,6 +3,7 @@ import 'package:test_app/presentation/cubits/root/root_state.dart';
 
 class RootCubit extends Cubit<RootState> {
   RootCubit() : super(const RootState());
+
   void updateIndex(int index) {
     switch (index) {
       case 0:
