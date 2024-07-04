@@ -54,7 +54,7 @@ class _SettingTilesState extends State<SettingTiles> {
           ),
         ],
       ),
-      onTap: () => widget.onTap,
+      onTap: widget.onTap,
     );
   }
 }

@@ -21,7 +21,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       height: 120,
-      width: double.infinity,
+      width: double.maxFinite,
       decoration: const BoxDecoration(
         color: Colors.transparent,
       ),
@@ -30,6 +30,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListView.builder(
+            shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               return Column(
                 children: [

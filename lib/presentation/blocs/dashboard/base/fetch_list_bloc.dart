@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:test_app/utils/logger.dart';
@@ -16,7 +17,43 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
         emit(FetchListLoading());
         final data =
             await futureFunction(event.offset, event.limit, event.terms);
-        emit(FetchListLoaded(data));
+        emit(FetchListLoaded(
+            data: data,
+            offset: event.offset,
+            limit: event.limit,
+            terms: event.terms));
+      } catch (err) {
+        logE('Error caught on getDataEvent $err');
+        emit(FetchListError(err));
+      }
+    });
+
+    on<LoadMoreEvent>((event, emit) async {
+      try {
+        final data = await futureFunction(
+            (event.offset + event.offset), event.limit, event.terms);
+
+        if (data.isNotEmpty) {
+          final newData = List<T>.from(event.data);
+          newData.addAll(data);
+          emit(
+            FetchListLoaded(
+              data: newData,
+              offset: (event.offset + event.offset),
+              limit: event.limit,
+              terms: event.terms,
+            ),
+          );
+        } else {
+          emit(
+            FetchListLoaded(
+              data: event.data as List<T>,
+              offset: (event.offset),
+              limit: event.limit,
+              terms: event.terms,
+            ),
+          );
+        }
       } catch (err) {
         logE('Error caught on getDataEvent $err');
         emit(FetchListError(err));
@@ -29,5 +66,9 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
     /// initialize data
     //TODO set param
     add(const GetDataEvent(offset: 20, limit: 20, terms: ''));
+  }
+
+  void cleanCached() {
+    //TODO if needed
   }
 }

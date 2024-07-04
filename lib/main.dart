@@ -26,6 +26,7 @@ FutureOr<void> main() async {
     DeviceOrientation.portraitUp,
   ]).then((value) {
     runApp(const MyApp());
+    //TODO Splash screen.... force update .... etc.
   });
 }
 

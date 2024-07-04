@@ -182,7 +182,6 @@ Song _$SongFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Song {
   String? get wrapperType => throw _privateConstructorUsedError;
-  String? get kind => throw _privateConstructorUsedError;
   String? get artistName => throw _privateConstructorUsedError;
   String? get trackName => throw _privateConstructorUsedError;
   String? get artworkUrl60 => throw _privateConstructorUsedError;
@@ -200,7 +199,6 @@ abstract class $SongCopyWith<$Res> {
   @useResult
   $Res call(
       {String? wrapperType,
-      String? kind,
       String? artistName,
       String? trackName,
       String? artworkUrl60,
@@ -221,7 +219,6 @@ class _$SongCopyWithImpl<$Res, $Val extends Song>
   @override
   $Res call({
     Object? wrapperType = freezed,
-    Object? kind = freezed,
     Object? artistName = freezed,
     Object? trackName = freezed,
     Object? artworkUrl60 = freezed,
@@ -231,10 +228,6 @@ class _$SongCopyWithImpl<$Res, $Val extends Song>
       wrapperType: freezed == wrapperType
           ? _value.wrapperType
           : wrapperType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kind: freezed == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
               as String?,
       artistName: freezed == artistName
           ? _value.artistName
@@ -265,7 +258,6 @@ abstract class _$$SongImplCopyWith<$Res> implements $SongCopyWith<$Res> {
   @useResult
   $Res call(
       {String? wrapperType,
-      String? kind,
       String? artistName,
       String? trackName,
       String? artworkUrl60,
@@ -283,7 +275,6 @@ class __$$SongImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? wrapperType = freezed,
-    Object? kind = freezed,
     Object? artistName = freezed,
     Object? trackName = freezed,
     Object? artworkUrl60 = freezed,
@@ -293,10 +284,6 @@ class __$$SongImplCopyWithImpl<$Res>
       wrapperType: freezed == wrapperType
           ? _value.wrapperType
           : wrapperType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kind: freezed == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
               as String?,
       artistName: freezed == artistName
           ? _value.artistName
@@ -323,7 +310,6 @@ class __$$SongImplCopyWithImpl<$Res>
 class _$SongImpl implements _Song {
   const _$SongImpl(
       {this.wrapperType,
-      this.kind,
       this.artistName,
       this.trackName,
       this.artworkUrl60,
@@ -335,8 +321,6 @@ class _$SongImpl implements _Song {
   @override
   final String? wrapperType;
   @override
-  final String? kind;
-  @override
   final String? artistName;
   @override
   final String? trackName;
@@ -347,7 +331,7 @@ class _$SongImpl implements _Song {
 
   @override
   String toString() {
-    return 'Song(wrapperType: $wrapperType, kind: $kind, artistName: $artistName, trackName: $trackName, artworkUrl60: $artworkUrl60, primaryGenreName: $primaryGenreName)';
+    return 'Song(wrapperType: $wrapperType, artistName: $artistName, trackName: $trackName, artworkUrl60: $artworkUrl60, primaryGenreName: $primaryGenreName)';
   }
 
   @override
@@ -357,7 +341,6 @@ class _$SongImpl implements _Song {
             other is _$SongImpl &&
             (identical(other.wrapperType, wrapperType) ||
                 other.wrapperType == wrapperType) &&
-            (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.artistName, artistName) ||
                 other.artistName == artistName) &&
             (identical(other.trackName, trackName) ||
@@ -370,7 +353,7 @@ class _$SongImpl implements _Song {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, wrapperType, kind, artistName,
+  int get hashCode => Object.hash(runtimeType, wrapperType, artistName,
       trackName, artworkUrl60, primaryGenreName);
 
   @JsonKey(ignore: true)
@@ -390,7 +373,6 @@ class _$SongImpl implements _Song {
 abstract class _Song implements Song {
   const factory _Song(
       {final String? wrapperType,
-      final String? kind,
       final String? artistName,
       final String? trackName,
       final String? artworkUrl60,
@@ -400,8 +382,6 @@ abstract class _Song implements Song {
 
   @override
   String? get wrapperType;
-  @override
-  String? get kind;
   @override
   String? get artistName;
   @override
