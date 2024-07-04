@@ -59,7 +59,6 @@ class _RootScreenState extends State<RootScreen> {
     switch (navbarItem) {
       case NavbarItem.dashboard:
         return 'Dashboard';
-
       case NavbarItem.favourite:
         return 'Favourite';
       case NavbarItem.setting:

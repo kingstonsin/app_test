@@ -49,7 +49,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: double.maxFinite,
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
       decoration: BoxDecoration(
         color: Colors.white,

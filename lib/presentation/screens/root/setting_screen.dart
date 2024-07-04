@@ -5,7 +5,7 @@ import 'package:test_app/presentation/cubits/locale/locale_cubit.dart';
 import 'package:test_app/presentation/cubits/setting/setting_cubit.dart';
 import 'package:test_app/presentation/cubits/setting/setting_state.dart';
 import 'package:test_app/presentation/widgets/language_bottom_sheet.dart';
-import 'package:test_app/presentation/widgets/tiles/setting_tiles.dart';
+import 'package:test_app/presentation/widgets/tiles/setting_tile.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -22,7 +22,7 @@ class _SettingScreenState extends State<SettingScreen> {
         switch (state.settingStatus) {
           case SettingStatus.onLanguage:
             showModalBottomSheet(
-              context: context,
+              context: globalContext,
               builder: (context) => BlocBuilder<LocaleCubit, LocaleState>(
                 builder: (context, localeState) {
                   return LanguageBottomSheet(

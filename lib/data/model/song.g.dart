@@ -23,7 +23,6 @@ Map<String, dynamic> _$$SongListImplToJson(_$SongListImpl instance) =>
 
 _$SongImpl _$$SongImplFromJson(Map<String, dynamic> json) => _$SongImpl(
       wrapperType: json['wrapperType'] as String?,
-      kind: json['kind'] as String?,
       artistName: json['artistName'] as String?,
       trackName: json['trackName'] as String?,
       artworkUrl60: json['artworkUrl60'] as String?,
@@ -33,7 +32,6 @@ _$SongImpl _$$SongImplFromJson(Map<String, dynamic> json) => _$SongImpl(
 Map<String, dynamic> _$$SongImplToJson(_$SongImpl instance) =>
     <String, dynamic>{
       'wrapperType': instance.wrapperType,
-      'kind': instance.kind,
       'artistName': instance.artistName,
       'trackName': instance.trackName,
       'artworkUrl60': instance.artworkUrl60,
