@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_app/presentation/cubits/fav/fav_bloc.dart';
+import 'package:test_app/presentation/blocs/fav/fav_bloc.dart';
 import 'package:test_app/presentation/widgets/empty_list_widget.dart';
 import 'package:test_app/presentation/widgets/tiles/song_tile.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class FavScreen extends StatelessWidget {
+  const FavScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,11 @@ class MyWidget extends StatelessWidget {
                   return SongTile(
                     song: state.favList![index],
                     isFavorite: true,
-                    onFavoriteChanged: (bool value) {},
+                    onFavoriteChanged: (bool value) {
+                      context.read<FavBloc>().add(RemoveData(
+                            song: state.favList![index],
+                          ));
+                    },
                   );
                 },
                 itemCount: state.favList!.length,

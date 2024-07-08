@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:test_app/common/injection/get_it.dart';
@@ -29,6 +31,13 @@ class FavBloc extends Bloc<FavEvent, FavState> {
 
   Future<void> _init(Init event, Emitter<FavState> emit) async {
     logD("Subscribe Application list");
+    _subscribeList();
+
+    favListRepoImp.getFavList();
+  }
+
+  void _subscribeList() {
+    logD('subscribe fav List');
     _subscription = favListRepoImp.songList.listen(
       (list) {
         emit(state.copyWith(favList: list));
@@ -41,9 +50,11 @@ class FavBloc extends Bloc<FavEvent, FavState> {
 
   Future<void> _fetchData(FetchData event, Emitter<FavState> emit) async {
     favListRepoImp.getFavList();
+    // emit(state.copyWith(favList: favListRepoImp.favList));
   }
 
   Future<void> _removeData(RemoveData event, Emitter<FavState> emit) async {
     favListRepoImp.removeFav(song: event.song);
+    // emit(state.copyWith(favList: favListRepoImp.favList));
   }
 }

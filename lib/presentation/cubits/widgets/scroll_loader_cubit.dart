@@ -8,9 +8,6 @@ class ScrollLoaderCubit extends Cubit<ScrollLoaderState> {
   Future<void> onScrollEnd() async {
     logD('onScrollEnd...');
     emit(state.copyWith(scrollingStatus: ScrollingStatus.endScroll));
-    // Future.delayed(const Duration(seconds: 2)).then((_) {
-    //   emit(state.copyWith(scrollingStatus: ScrollingStatus.idle));
-    // });
   }
 
   void onOverScroll() {

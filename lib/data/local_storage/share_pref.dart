@@ -52,9 +52,13 @@ class SharePref {
 
   Future<List<Song>> getFav() async {
     final jsonList = _sharedPreferences!.getString(favListKey);
-    if (jsonList != null) {
-      final List<Song> songsMap = json.decode(jsonList);
-      return songsMap;
+    if (jsonList != null && jsonList != '[]') {
+      final List<dynamic> jsonData = json.decode(jsonList);
+      final List<Song> songs = jsonData
+          .map((dynamic item) => Song.fromJson(item as Map<String, dynamic>))
+          .toList();
+
+      return songs;
     } else {
       return [];
     }

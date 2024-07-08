@@ -1,5 +1,7 @@
 {
+  "application_search_hint": "song, artist ...",
   "dashboard": "Dashboard",
+  "empty_data_desc": "Data not available for now",
   "english": "English",
   "favourite": "Favourite",
   "language_setting_decs": "Set your language",

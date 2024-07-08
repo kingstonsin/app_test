@@ -30,8 +30,8 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
 
     on<LoadMoreEvent>((event, emit) async {
       try {
-        final data = await futureFunction(
-            (event.offset + event.offset), event.limit, event.terms);
+        final data =
+            await futureFunction((event.offset + 20), event.limit, event.terms);
 
         if (data.isNotEmpty) {
           final newData = List<T>.from(event.data);
@@ -39,7 +39,7 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
           emit(
             FetchListLoaded(
               data: newData,
-              offset: (event.offset + event.offset),
+              offset: (event.offset + 20),
               limit: event.limit,
               terms: event.terms,
             ),
@@ -64,7 +64,6 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
   }
   void onCreate() {
     /// initialize data
-    //TODO set param
     add(const GetDataEvent(offset: 20, limit: 20, terms: ''));
   }
 

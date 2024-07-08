@@ -10,6 +10,9 @@ import 'package:test_app/presentation/widgets/custom_search_bar.dart';
 import 'package:test_app/presentation/widgets/tiles/song_tile.dart';
 import 'package:test_app/theme/theme_helper.dart';
 
+import '../../cubits/song tile/song_tile_cubit.dart';
+import '../../cubits/song tile/song_tile_state.dart';
+
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -35,9 +38,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: BlocProvider<FetchListBloc>(
           create: (context) => FetchListBloc(
             (offset, limit, terms) => songListRepoImp.getSongList(
-                offset: 0,
+                offset: offset,
                 limit: limit,
-                terms: terms.isEmpty ? 'Eminem' : terms),
+                terms:
+                    terms.isEmpty ? 'Eminem' : Uri.encodeQueryComponent(terms)),
           ),
           child: BlocConsumer<FetchListBloc, FetchListState>(
             builder: (context, state) {
@@ -88,7 +92,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               return const Text("default case");
             },
             listener: (BuildContext context, FetchListState<dynamic> state) {
-              if (state is FetchListLoading) {
+              if (state is FetchListLoading || state is FetchListLoadMore) {
                 EasyLoading.show();
               } else if (EasyLoading.isShow) {
                 EasyLoading.dismiss();
@@ -104,17 +108,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
       Column(
         children: [
           CustomSearchBar(
-            // placeholder: l10n().application_search_hint, //TODO l10n
+            placeholder: l10n().application_search_hint,
             controller: _searchBarController,
-            onChanged: (String) {},
+            onChanged: (_) {},
             onEditingComplete: () {
               context.read<FetchListBloc>().add(
                     GetDataEvent(
-                        offset: 0,
-                        limit: state.limit,
-                        terms: _searchBarController.text),
+                      offset: 0,
+                      limit: state.limit,
+                      terms:
+                          Uri.encodeQueryComponent(_searchBarController.text),
+                    ),
                   );
-              // context.read<ClientListBloc>().add(OnSearch()); //TODO search
             },
           ),
           const SizedBox(
@@ -155,17 +160,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
-                      final song = state.data[index];
-                      final isFavorite = favListRepoImp.favList.contains(song);
-                      return SongTile(
-                        song: state.data[index],
-                        isFavorite: isFavorite,
-                        onFavoriteChanged: (bool value) {
-                          value
-                              ? favListRepoImp.addToFav(song: state.data[index])
-                              : favListRepoImp.removeFav(
-                                  song: state.data[index]);
-                          ;
+                      return BlocBuilder<SongTileCubit, SongTileState>(
+                        builder: (context, songTileState) {
+                          final song = state.data[index];
+
+                          return SongTile(
+                            song: state.data[index],
+                            isFavorite:
+                                context.read<SongTileCubit>().isFav(song: song),
+                            onFavoriteChanged: (bool value) {
+                              value
+                                  ? context
+                                      .read<SongTileCubit>()
+                                      .onAddToFav(song: state.data[index])
+                                  : context
+                                      .read<SongTileCubit>()
+                                      .onRemoveFav(song: state.data[index]);
+                            },
+                          );
                         },
                       );
                     },

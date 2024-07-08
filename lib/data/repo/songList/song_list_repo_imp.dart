@@ -16,9 +16,10 @@ class SongListRepoImp extends SongListRepo {
     required String limit,
     required String terms,
   }) async {
-    //TODO url encode terms / filtering kerywords...
+    final lang =
+        globalContext.read<LocaleCubit>().currentLocale!.apiLanguageCode;
     final Response response = await dioService.get(
-      'search?term=$terms&limit=$limit&offset=$offset&lang=${globalContext.read<LocaleCubit>().currentLocale!.apiLanguageCode}', //TODO extract locale outside
+      'search?term=$terms&limit=$limit&offset=$offset&lang=$lang',
     );
 
     logD(' RESULT = ${response.data}');
