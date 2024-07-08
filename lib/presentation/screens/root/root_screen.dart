@@ -49,7 +49,7 @@ class _RootScreenState extends State<RootScreen> {
       case NavbarItem.dashboard:
         return const DashboardScreen();
       case NavbarItem.favourite:
-        return SizedBox();
+        return const SizedBox();
       case NavbarItem.setting:
         return const SettingScreen();
     }

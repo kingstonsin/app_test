@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/common/enums/locale_enum.dart';
 import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/data/model/song.dart';
-import 'package:test_app/data/repo/song_list_repo.dart';
+import 'package:test_app/data/repo/songList/song_list_repo.dart';
 import 'package:test_app/presentation/cubits/locale/locale_cubit.dart';
 import 'package:test_app/utils/logger.dart';
 
@@ -18,7 +18,7 @@ class SongListRepoImp extends SongListRepo {
   }) async {
     //TODO url encode terms / filtering kerywords...
     final Response response = await dioService.get(
-      'search?term=$terms&limit=$limit&offset=$offset&lang=${globalContext.read<LocaleCubit>().currentLocale!.apiLanguageCode}',
+      'search?term=$terms&limit=$limit&offset=$offset&lang=${globalContext.read<LocaleCubit>().currentLocale!.apiLanguageCode}', //TODO extract locale outside
     );
 
     logD(' RESULT = ${response.data}');

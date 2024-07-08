@@ -1,10 +1,14 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_app/common/enums/locale_enum.dart';
+import 'package:test_app/data/model/song.dart';
 import 'package:test_app/utils/logger.dart';
 
 const localeKey = "locale";
+const favListKey = "fav";
 
 class SharePref {
   static SharedPreferences? _sharedPreferences;
@@ -18,7 +22,9 @@ class SharePref {
 
   Future<void> init() async {
     _sharedPreferences ??= await SharedPreferences.getInstance();
-    print('SharedPreference Initialized');
+    if (kDebugMode) {
+      print('SharedPreference Initialized');
+    }
   }
 
   ///will clear all the data stored in preference
@@ -35,6 +41,22 @@ class SharePref {
       return _sharedPreferences!.getString('themeData')!;
     } catch (e) {
       return 'primary';
+    }
+  }
+
+  Future<void> setFav(List<Song> value) async {
+    logD('setFav... ');
+    final jsonList = json.encode(value.map((e) => e.toJson()).toList());
+    await _sharedPreferences!.setString(favListKey, jsonList);
+  }
+
+  Future<List<Song>> getFav() async {
+    final jsonList = _sharedPreferences!.getString(favListKey);
+    if (jsonList != null) {
+      final List<Song> songsMap = json.decode(jsonList);
+      return songsMap;
+    } else {
+      return [];
     }
   }
 
