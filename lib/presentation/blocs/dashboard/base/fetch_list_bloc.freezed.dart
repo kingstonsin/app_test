@@ -19,24 +19,32 @@ mixin _$FetchListEvent<T> {
   int get offset => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
   String get terms => throw _privateConstructorUsedError;
+  String get entity => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int offset, int limit, String terms) getData,
-    required TResult Function(int offset, int limit, String terms, List<T> data)
+    required TResult Function(
+            int offset, int limit, String terms, String entity)
+        getData,
+    required TResult Function(
+            int offset, int limit, String terms, String entity, List<T> data)
         loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int offset, int limit, String terms)? getData,
-    TResult? Function(int offset, int limit, String terms, List<T> data)?
+    TResult? Function(int offset, int limit, String terms, String entity)?
+        getData,
+    TResult? Function(
+            int offset, int limit, String terms, String entity, List<T> data)?
         loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int offset, int limit, String terms)? getData,
-    TResult Function(int offset, int limit, String terms, List<T> data)?
+    TResult Function(int offset, int limit, String terms, String entity)?
+        getData,
+    TResult Function(
+            int offset, int limit, String terms, String entity, List<T> data)?
         loadMore,
     required TResult orElse(),
   }) =>
@@ -72,7 +80,7 @@ abstract class $FetchListEventCopyWith<T, $Res> {
           FetchListEvent<T> value, $Res Function(FetchListEvent<T>) then) =
       _$FetchListEventCopyWithImpl<T, $Res, FetchListEvent<T>>;
   @useResult
-  $Res call({int offset, int limit, String terms});
+  $Res call({int offset, int limit, String terms, String entity});
 }
 
 /// @nodoc
@@ -91,6 +99,7 @@ class _$FetchListEventCopyWithImpl<T, $Res, $Val extends FetchListEvent<T>>
     Object? offset = null,
     Object? limit = null,
     Object? terms = null,
+    Object? entity = null,
   }) {
     return _then(_value.copyWith(
       offset: null == offset
@@ -105,6 +114,10 @@ class _$FetchListEventCopyWithImpl<T, $Res, $Val extends FetchListEvent<T>>
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
               as String,
+      entity: null == entity
+          ? _value.entity
+          : entity // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -117,7 +130,7 @@ abstract class _$$GetDataEventImplCopyWith<T, $Res>
       __$$GetDataEventImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({int offset, int limit, String terms});
+  $Res call({int offset, int limit, String terms, String entity});
 }
 
 /// @nodoc
@@ -134,6 +147,7 @@ class __$$GetDataEventImplCopyWithImpl<T, $Res>
     Object? offset = null,
     Object? limit = null,
     Object? terms = null,
+    Object? entity = null,
   }) {
     return _then(_$GetDataEventImpl<T>(
       offset: null == offset
@@ -148,6 +162,10 @@ class __$$GetDataEventImplCopyWithImpl<T, $Res>
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
               as String,
+      entity: null == entity
+          ? _value.entity
+          : entity // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -158,7 +176,10 @@ class _$GetDataEventImpl<T>
     with DiagnosticableTreeMixin
     implements GetDataEvent<T> {
   const _$GetDataEventImpl(
-      {required this.offset, required this.limit, required this.terms});
+      {required this.offset,
+      required this.limit,
+      required this.terms,
+      required this.entity});
 
   @override
   final int offset;
@@ -166,10 +187,12 @@ class _$GetDataEventImpl<T>
   final int limit;
   @override
   final String terms;
+  @override
+  final String entity;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FetchListEvent<$T>.getData(offset: $offset, limit: $limit, terms: $terms)';
+    return 'FetchListEvent<$T>.getData(offset: $offset, limit: $limit, terms: $terms, entity: $entity)';
   }
 
   @override
@@ -179,7 +202,8 @@ class _$GetDataEventImpl<T>
       ..add(DiagnosticsProperty('type', 'FetchListEvent<$T>.getData'))
       ..add(DiagnosticsProperty('offset', offset))
       ..add(DiagnosticsProperty('limit', limit))
-      ..add(DiagnosticsProperty('terms', terms));
+      ..add(DiagnosticsProperty('terms', terms))
+      ..add(DiagnosticsProperty('entity', entity));
   }
 
   @override
@@ -189,11 +213,12 @@ class _$GetDataEventImpl<T>
             other is _$GetDataEventImpl<T> &&
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.terms, terms) || other.terms == terms));
+            (identical(other.terms, terms) || other.terms == terms) &&
+            (identical(other.entity, entity) || other.entity == entity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, offset, limit, terms);
+  int get hashCode => Object.hash(runtimeType, offset, limit, terms, entity);
 
   @JsonKey(ignore: true)
   @override
@@ -205,33 +230,40 @@ class _$GetDataEventImpl<T>
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int offset, int limit, String terms) getData,
-    required TResult Function(int offset, int limit, String terms, List<T> data)
+    required TResult Function(
+            int offset, int limit, String terms, String entity)
+        getData,
+    required TResult Function(
+            int offset, int limit, String terms, String entity, List<T> data)
         loadMore,
   }) {
-    return getData(offset, limit, terms);
+    return getData(offset, limit, terms, entity);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int offset, int limit, String terms)? getData,
-    TResult? Function(int offset, int limit, String terms, List<T> data)?
+    TResult? Function(int offset, int limit, String terms, String entity)?
+        getData,
+    TResult? Function(
+            int offset, int limit, String terms, String entity, List<T> data)?
         loadMore,
   }) {
-    return getData?.call(offset, limit, terms);
+    return getData?.call(offset, limit, terms, entity);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int offset, int limit, String terms)? getData,
-    TResult Function(int offset, int limit, String terms, List<T> data)?
+    TResult Function(int offset, int limit, String terms, String entity)?
+        getData,
+    TResult Function(
+            int offset, int limit, String terms, String entity, List<T> data)?
         loadMore,
     required TResult orElse(),
   }) {
     if (getData != null) {
-      return getData(offset, limit, terms);
+      return getData(offset, limit, terms, entity);
     }
     return orElse();
   }
@@ -272,7 +304,8 @@ abstract class GetDataEvent<T> implements FetchListEvent<T> {
   const factory GetDataEvent(
       {required final int offset,
       required final int limit,
-      required final String terms}) = _$GetDataEventImpl<T>;
+      required final String terms,
+      required final String entity}) = _$GetDataEventImpl<T>;
 
   @override
   int get offset;
@@ -280,6 +313,8 @@ abstract class GetDataEvent<T> implements FetchListEvent<T> {
   int get limit;
   @override
   String get terms;
+  @override
+  String get entity;
   @override
   @JsonKey(ignore: true)
   _$$GetDataEventImplCopyWith<T, _$GetDataEventImpl<T>> get copyWith =>
@@ -294,7 +329,7 @@ abstract class _$$LoadMoreEventImplCopyWith<T, $Res>
       __$$LoadMoreEventImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({int offset, int limit, String terms, List<T> data});
+  $Res call({int offset, int limit, String terms, String entity, List<T> data});
 }
 
 /// @nodoc
@@ -311,6 +346,7 @@ class __$$LoadMoreEventImplCopyWithImpl<T, $Res>
     Object? offset = null,
     Object? limit = null,
     Object? terms = null,
+    Object? entity = null,
     Object? data = null,
   }) {
     return _then(_$LoadMoreEventImpl<T>(
@@ -325,6 +361,10 @@ class __$$LoadMoreEventImplCopyWithImpl<T, $Res>
       terms: null == terms
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
+              as String,
+      entity: null == entity
+          ? _value.entity
+          : entity // ignore: cast_nullable_to_non_nullable
               as String,
       data: null == data
           ? _value._data
@@ -343,6 +383,7 @@ class _$LoadMoreEventImpl<T>
       {required this.offset,
       required this.limit,
       required this.terms,
+      required this.entity,
       required final List<T> data})
       : _data = data;
 
@@ -352,6 +393,8 @@ class _$LoadMoreEventImpl<T>
   final int limit;
   @override
   final String terms;
+  @override
+  final String entity;
   final List<T> _data;
   @override
   List<T> get data {
@@ -362,7 +405,7 @@ class _$LoadMoreEventImpl<T>
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FetchListEvent<$T>.loadMore(offset: $offset, limit: $limit, terms: $terms, data: $data)';
+    return 'FetchListEvent<$T>.loadMore(offset: $offset, limit: $limit, terms: $terms, entity: $entity, data: $data)';
   }
 
   @override
@@ -373,6 +416,7 @@ class _$LoadMoreEventImpl<T>
       ..add(DiagnosticsProperty('offset', offset))
       ..add(DiagnosticsProperty('limit', limit))
       ..add(DiagnosticsProperty('terms', terms))
+      ..add(DiagnosticsProperty('entity', entity))
       ..add(DiagnosticsProperty('data', data));
   }
 
@@ -384,11 +428,12 @@ class _$LoadMoreEventImpl<T>
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.limit, limit) || other.limit == limit) &&
             (identical(other.terms, terms) || other.terms == terms) &&
+            (identical(other.entity, entity) || other.entity == entity) &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, offset, limit, terms,
+  int get hashCode => Object.hash(runtimeType, offset, limit, terms, entity,
       const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
@@ -401,33 +446,40 @@ class _$LoadMoreEventImpl<T>
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int offset, int limit, String terms) getData,
-    required TResult Function(int offset, int limit, String terms, List<T> data)
+    required TResult Function(
+            int offset, int limit, String terms, String entity)
+        getData,
+    required TResult Function(
+            int offset, int limit, String terms, String entity, List<T> data)
         loadMore,
   }) {
-    return loadMore(offset, limit, terms, data);
+    return loadMore(offset, limit, terms, entity, data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int offset, int limit, String terms)? getData,
-    TResult? Function(int offset, int limit, String terms, List<T> data)?
+    TResult? Function(int offset, int limit, String terms, String entity)?
+        getData,
+    TResult? Function(
+            int offset, int limit, String terms, String entity, List<T> data)?
         loadMore,
   }) {
-    return loadMore?.call(offset, limit, terms, data);
+    return loadMore?.call(offset, limit, terms, entity, data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int offset, int limit, String terms)? getData,
-    TResult Function(int offset, int limit, String terms, List<T> data)?
+    TResult Function(int offset, int limit, String terms, String entity)?
+        getData,
+    TResult Function(
+            int offset, int limit, String terms, String entity, List<T> data)?
         loadMore,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
-      return loadMore(offset, limit, terms, data);
+      return loadMore(offset, limit, terms, entity, data);
     }
     return orElse();
   }
@@ -469,6 +521,7 @@ abstract class LoadMoreEvent<T> implements FetchListEvent<T> {
       {required final int offset,
       required final int limit,
       required final String terms,
+      required final String entity,
       required final List<T> data}) = _$LoadMoreEventImpl<T>;
 
   @override
@@ -477,6 +530,8 @@ abstract class LoadMoreEvent<T> implements FetchListEvent<T> {
   int get limit;
   @override
   String get terms;
+  @override
+  String get entity;
   List<T> get data;
   @override
   @JsonKey(ignore: true)

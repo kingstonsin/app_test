@@ -92,33 +92,28 @@ class DioService {
                     Text(
                       l10n().fail,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      l10n().connection_timeout,
-                    )
                   ],
                 );
               },
             );
-            // await statusCodeHandler(statusCode: e.response!.statusCode);
           } else if (e.type == DioExceptionType.unknown) {
+            //TODO
             showDialog(
               context: globalContext,
               builder: (BuildContext context) {
-                return Column(
-                  children: [
-                    Text(
-                      l10n().fail,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      l10n().connection_timeout,
-                    )
-                  ],
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 400,
+                      ),
+                      Text(
+                        l10n().fail,
+                        style: const TextStyle().copyWith(color: Colors.red),
+                      ),
+                    ],
+                  ),
                 );
               },
             );

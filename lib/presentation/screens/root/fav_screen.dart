@@ -28,7 +28,7 @@ class FavScreen extends StatelessWidget {
                 },
                 itemCount: state.favList!.length,
               )
-            : const EmptyListWIdget();
+            : const EmptyListWidget();
       },
     );
   }

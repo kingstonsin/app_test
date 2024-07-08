@@ -5,5 +5,6 @@ abstract class SongListRepo {
     required String offset,
     required String limit,
     required String terms,
+    required String entity,
   });
 }

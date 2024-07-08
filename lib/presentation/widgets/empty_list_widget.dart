@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:test_app/common/injection/get_it.dart';
 
-class EmptyListWIdget extends StatelessWidget {
-  const EmptyListWIdget({super.key});
+class EmptyListWidget extends StatelessWidget {
+  const EmptyListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

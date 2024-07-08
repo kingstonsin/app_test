@@ -1,19 +1,19 @@
 part of 'fetch_list_bloc.dart';
 
-class FetchListState<T> {
-  String entity = '';
-}
+class FetchListState<T> {}
 
 class FetchListLoadMore<T> extends FetchListState<T> {
   final List<T> data;
   final int offset;
   final int limit;
   final String terms;
+  String entity = 'All';
   FetchListLoadMore({
     required this.data,
     required this.offset,
     required this.limit,
     required this.terms,
+    required this.entity,
   });
 }
 
@@ -26,11 +26,13 @@ class FetchListLoaded<T> extends FetchListState<T> {
   final int offset;
   final int limit;
   final String terms;
+  String entity = 'All';
   FetchListLoaded({
     required this.data,
     required this.offset,
     required this.limit,
     required this.terms,
+    required this.entity,
   });
 }
 

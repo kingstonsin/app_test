@@ -1,12 +1,23 @@
 {
+  "all": "全部",
   "application_search_hint": "歌曲、藝人...",
+  "audio_book": "有聲讀物",
   "dashboard": "主頁",
+  "ebook": "電子書",
   "empty_data_desc": "暫時無法取得數據",
   "english": "英語",
+  "fail": "失敗",
   "favourite": "最愛",
   "language_setting_decs": "設定您的語言",
   "language_setting_title": "語言",
+  "movie": "電影",
+  "music": "音樂",
+  "music_video": "音樂視頻",
+  "podcast": "播客",
   "setting": "設定",
+  "short_film": "短片",
   "simplified_chinese": "簡體中文",
-  "traditional_chinese": "繁體中文"
+  "software": "軟件",
+  "traditional_chinese": "繁體中文",
+  "tv_show": "電視節目"
 }

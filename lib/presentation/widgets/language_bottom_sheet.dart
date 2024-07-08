@@ -7,7 +7,6 @@ import 'package:test_app/common/constant/image_constant.dart';
 import 'package:test_app/common/enums/locale_enum.dart';
 import 'package:test_app/presentation/cubits/locale/locale_cubit.dart';
 import 'package:test_app/presentation/widgets/custom_image_widget.dart';
-import 'package:test_app/theme/theme_helper.dart';
 
 class LanguageBottomSheet extends StatefulWidget {
   LanguageBottomSheet({super.key, required this.currentLocale});
@@ -21,11 +20,10 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      height: 300,
       width: double.maxFinite,
-      decoration: BoxDecoration(
-        color: appTheme.iconColor,
-      ),
+      decoration: const BoxDecoration(color: Colors.white),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,

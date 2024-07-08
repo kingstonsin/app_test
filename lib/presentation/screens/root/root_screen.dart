@@ -60,11 +60,11 @@ class _RootScreenState extends State<RootScreen> {
   String _getTitle(NavbarItem navbarItem) {
     switch (navbarItem) {
       case NavbarItem.dashboard:
-        return 'Dashboard';
+        return l10n().dashboard;
       case NavbarItem.favourite:
-        return 'Favourite';
+        return l10n().favourite;
       case NavbarItem.setting:
-        return 'Setting';
+        return l10n().setting;
     }
   }
 
