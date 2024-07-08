@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:shimmer_loading/shimmer_loading.dart';
 import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/presentation/blocs/dashboard/base/fetch_list_bloc.dart';
 import 'package:test_app/presentation/cubits/widgets/scroll_loader_cubit.dart';
@@ -156,8 +155,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
+                      final song = state.data[index];
+                      final isFavorite = favListRepoImp.favList.contains(song);
                       return SongTile(
                         song: state.data[index],
+                        isFavorite: isFavorite,
+                        onFavoriteChanged: (bool value) {
+                          value
+                              ? favListRepoImp.addToFav(song: state.data[index])
+                              : favListRepoImp.removeFav(
+                                  song: state.data[index]);
+                          ;
+                        },
                       );
                     },
                     itemCount: state.data.length,
@@ -168,7 +177,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
             ),
-            padding: EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             child: BlocBuilder<ScrollLoaderCubit, ScrollLoaderState>(
               builder: (context, scrollLoaderState) {
                 return scrollLoaderState.scrollingStatus ==
@@ -177,11 +186,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         color: appTheme.secondaryColor,
                         size: 30,
                       )
-                    : SizedBox();
+                    : const SizedBox();
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
         ],

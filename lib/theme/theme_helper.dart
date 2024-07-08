@@ -17,8 +17,8 @@ class ThemeHelper {
     'primary': ColorSchemes.primaryColorScheme
   };
 
-  /// Changes the app theme to [_newTheme].
-  void changeTheme(String _newTheme) {
+  /// Changes the app theme to [newTheme].
+  void changeTheme(String newTheme) {
     //TODO
   }
 

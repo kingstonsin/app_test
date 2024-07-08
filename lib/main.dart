@@ -9,9 +9,10 @@ import 'package:test_app/common/enums/locale_enum.dart';
 import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/common/routes/go_router_config.dart';
 import 'package:test_app/data/local_storage/share_pref.dart';
+import 'package:test_app/main.dart';
 import 'package:test_app/presentation/cubits/locale/locale_cubit.dart';
 import 'package:test_app/theme/theme_helper.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+export 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 FutureOr<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

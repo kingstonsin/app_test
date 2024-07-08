@@ -4,10 +4,14 @@ import 'package:test_app/theme/theme_helper.dart';
 
 class SongTile extends StatelessWidget {
   final Song song;
+  final bool isFavorite;
+  final ValueChanged<bool> onFavoriteChanged;
 
   const SongTile({
     super.key,
     required this.song,
+    required this.isFavorite,
+    required this.onFavoriteChanged,
   });
 
   @override
@@ -71,6 +75,15 @@ class SongTile extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            IconButton(
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: isFavorite ? Colors.red : Colors.grey,
+              ),
+              onPressed: () {
+                onFavoriteChanged(!isFavorite);
+              },
             ),
           ],
         ),
