@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/data/model/song.dart';
+import 'package:test_app/presentation/widgets/custom_image_widget.dart';
 import 'package:test_app/theme/theme_helper.dart';
 
 class SongTile extends StatelessWidget {
@@ -34,17 +35,23 @@ class SongTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //TODO change to custom image
-            if (song.artworkUrl60 != null)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
-                  song.artworkUrl60!,
-                  width: 60.0,
-                  height: 60.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
+            CustomImageView(
+              imagePath: song.artworkUrl60!,
+              width: 60.0,
+              height: 60.0,
+              fit: BoxFit.cover,
+            ),
+
+            // if (song.artworkUrl60 != null)
+            //   ClipRRect(
+            //     borderRadius: BorderRadius.circular(8.0),
+            //     child: Image.network(
+            //       song.artworkUrl60!,
+            //       width: 60.0,
+            //       height: 60.0,
+            //       fit: BoxFit.cover,
+            //     ),
+            //   ),
             const SizedBox(width: 16.0),
             Expanded(
               child: Column(

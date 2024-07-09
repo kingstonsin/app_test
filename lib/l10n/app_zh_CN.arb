@@ -1,5 +1,7 @@
 {
+  "application_search_hint": " 歌曲、艺人...",
   "dashboard": "主页",
+  "empty_data_desc": "暂时无法获得数据",
   "english": "英语",
   "favourite": "最爱",
   "language_setting_decs": "设置您的语言",

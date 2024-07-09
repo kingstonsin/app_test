@@ -16,7 +16,7 @@ extension AppLocaleExtension on AppLocale {
   String get title => switch (this) {
         AppLocale.EN => "English",
         AppLocale.ZH_TW => "中文",
-        AppLocale.ZH_CN => "中文", //TODO
+        AppLocale.ZH_CN => "中文",
       };
 
   String get apiLanguageCode => switch (this) {

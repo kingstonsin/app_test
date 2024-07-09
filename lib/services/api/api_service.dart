@@ -46,16 +46,12 @@ class DioService {
         },
         onResponse: (response, handler) async {
           try {
-            //TODO handle response model
-            // final ApiResponse _apiResponse =
-            //     ApiResponse.fromJson(response.data);
             if (response.data == null) {
               return handler.reject(
                 DioException(
                   requestOptions: response.requestOptions,
                   type: DioExceptionType.unknown,
                   error: response.data,
-                  // error: _apiResponse,
                 ),
                 true,
               );

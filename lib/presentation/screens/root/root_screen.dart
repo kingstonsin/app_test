@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/common/constant/image_constant.dart';
 import 'package:test_app/common/injection/get_it.dart';
+import 'package:test_app/presentation/blocs/fav/fav_bloc.dart';
 import 'package:test_app/presentation/cubits/root/root_cubit.dart';
 import 'package:test_app/presentation/cubits/root/root_state.dart';
 import 'package:test_app/presentation/screens/root/dash_board_screen.dart';
+import 'package:test_app/presentation/screens/root/fav_screen.dart';
 import 'package:test_app/presentation/screens/root/setting_screen.dart';
 import 'package:test_app/presentation/widgets/custom_image_widget.dart';
 
@@ -33,10 +35,10 @@ class _RootScreenState extends State<RootScreen> {
       },
       listener: (BuildContext context, RootState state) {
         switch (state.navbarItem) {
-          //TODO fetch data when changing tab
           case NavbarItem.dashboard:
-          // context.read<SongListBloc>().add(FetchList()); //TODO
           case NavbarItem.favourite:
+            context.read<FavBloc>().add(const FetchData());
+
           case NavbarItem.setting:
           default:
         }
@@ -49,7 +51,7 @@ class _RootScreenState extends State<RootScreen> {
       case NavbarItem.dashboard:
         return const DashboardScreen();
       case NavbarItem.favourite:
-        return const SizedBox();
+        return const FavScreen();
       case NavbarItem.setting:
         return const SettingScreen();
     }
@@ -69,7 +71,7 @@ class _RootScreenState extends State<RootScreen> {
   Widget _buildBottomNav({required RootState state}) {
     return BottomNavigationBar(
       useLegacyColorScheme: false,
-      // unselectedLabelStyle: styling..., //TODO
+      // unselectedLabelStyle: styling...,
       // selectedLabelStyle: styling...
       currentIndex: context.read<RootCubit>().state.index,
       type: BottomNavigationBarType.fixed,

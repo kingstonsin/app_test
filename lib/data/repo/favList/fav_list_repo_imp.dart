@@ -3,16 +3,18 @@ import 'package:test_app/data/model/song.dart';
 import 'package:test_app/data/repo/favList/fav_list_repo.dart';
 
 class FavListRepoImp extends FavListRepo {
+  List<Song> _favList = [];
+
   @override
-  List<Song> get favList => [];
+  List<Song> get favList => _favList;
 
   @override
   Future<void> getFavList() async {
     List<Song> data = await sharePref.getFav();
 
     if (data.isNotEmpty) {
-      favList = data;
-      return favListToStream(favList);
+      _favList = data;
+      return favListToStream(data);
     } else {
       return favListToStream([]);
     }
@@ -25,12 +27,14 @@ class FavListRepoImp extends FavListRepo {
 
   Future<void> addToFav({required Song song}) async {
     final updatedList = [...favList, song];
+    _favList = updatedList;
     favListToStream(updatedList);
     await setFavList();
   }
 
   Future<void> removeFav({required Song song}) async {
     final updatedList = favList.where((s) => s != song).toList();
+    _favList = updatedList;
     favListToStream(updatedList);
     await setFavList();
   }
