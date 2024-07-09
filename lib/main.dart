@@ -27,7 +27,7 @@ FutureOr<void> main() async {
     DeviceOrientation.portraitUp,
   ]).then((value) {
     runApp(const MyApp());
-    //TODO Splash screen.... force update .... etc.
+    // Splash screen.... force update .... etc.
   });
 }
 
@@ -39,7 +39,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LocaleCubit(),
-      child: BlocBuilder<LocaleCubit, LocaleState>(
+      child: BlocConsumer<LocaleCubit, LocaleState>(
+        listener: (BuildContext context, LocaleState state) {
+          if (state is LoadingState) {
+            EasyLoading.show();
+          } else {
+            EasyLoading.dismiss();
+          }
+        },
         builder: (context, localeState) {
           return MaterialApp.router(
             builder: (context, child) {

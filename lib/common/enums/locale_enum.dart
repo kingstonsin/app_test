@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/common/injection/get_it.dart';
 
 enum AppLocale {
   EN,
@@ -14,9 +15,9 @@ extension AppLocaleExtension on AppLocale {
       };
 
   String get title => switch (this) {
-        AppLocale.EN => "English",
-        AppLocale.ZH_TW => "中文",
-        AppLocale.ZH_CN => "中文",
+        AppLocale.EN => l10n().english,
+        AppLocale.ZH_TW => l10n().traditional_chinese,
+        AppLocale.ZH_CN => l10n().simplified_chinese,
       };
 
   String get apiLanguageCode => switch (this) {

@@ -1,12 +1,24 @@
 {
+  "all": "全部",
   "application_search_hint": " 歌曲、艺人...",
+  "audio_book": "有声读物",
   "dashboard": "主页",
+  "ebook": "电子书",
   "empty_data_desc": "暂时无法获得数据",
   "english": "英语",
+  "error_message": "发生错误",
+  "fail": "失败",
   "favourite": "最爱",
   "language_setting_decs": "设置您的语言",
   "language_setting_title": "语言",
+  "movie": "电影",
+  "music": "音乐",
+  "music_video": "音乐视频",
+  "podcast": "播客",
   "setting": "设置",
+  "short_film": "短片",
   "simplified_chinese": "简体中文",
-  "traditional_chinese": "繁体中文"
+  "software": "软件",
+  "traditional_chinese": "繁体中文",
+  "tv_show": "电视节目"
 }

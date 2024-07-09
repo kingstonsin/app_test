@@ -1,12 +1,24 @@
 {
+  "all": "All",
   "application_search_hint": "song, artist ...",
+  "audio_book": "Audiobooks",
   "dashboard": "Dashboard",
+  "ebook": "eBooks",
   "empty_data_desc": "Data not available for now",
   "english": "English",
+  "error_message": "An error occured",
+  "fail": "Fail",
   "favourite": "Favourite",
   "language_setting_decs": "Set your language",
   "language_setting_title": "Language",
+  "movie": "Movies",
+  "music": "Music",
+  "music_video": "Music Video",
+  "podcast": "Podcasts",
   "setting": "Setting",
+  "short_film": "short_films",
   "simplified_chinese": "Simplified Chinese",
-  "traditional_chinese": "Traditional Chinese"
+  "software": "Software",
+  "traditional_chinese": "Traditional Chinese",
+  "tv_show": "TV Shows"
 }

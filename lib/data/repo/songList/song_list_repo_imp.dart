@@ -15,11 +15,12 @@ class SongListRepoImp extends SongListRepo {
     required String offset,
     required String limit,
     required String terms,
+    required String entity,
   }) async {
     final lang =
         globalContext.read<LocaleCubit>().currentLocale!.apiLanguageCode;
     final Response response = await dioService.get(
-      'search?term=$terms&limit=$limit&offset=$offset&lang=$lang',
+      'search?term=$terms&limit=$limit&offset=$offset&lang=$lang&entity=$entity',
     );
 
     logD(' RESULT = ${response.data}');

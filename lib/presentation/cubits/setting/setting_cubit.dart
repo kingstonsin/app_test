@@ -15,7 +15,8 @@ class SettingCubit extends Cubit<SettingState> {
     switch (key) {
       case 'language':
         emit(state.copyWith(settingStatus: SettingStatus.onLanguage));
-      //TODO add options accordingly
+
+      /// add options accordingly...
     }
   }
 

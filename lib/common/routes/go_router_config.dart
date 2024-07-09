@@ -10,32 +10,33 @@ import 'package:test_app/presentation/screens/root/root_screen.dart';
 import 'package:test_app/services/navigation/navigation_service.dart';
 
 final goRouterConfig = GoRouter(
-    navigatorKey: GetIt.I<NavigationService>().navigatorKey,
-    initialLocation: '/root',
-    routes: [
-      GoRoute(
-        name: 'root_screen',
-        path: '/root',
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (_) => RootCubit(),
-            ),
-            BlocProvider(
-              create: (_) => SettingCubit(),
-            ),
-            BlocProvider(
-              create: (context) => ScrollLoaderCubit(),
-            ),
-            BlocProvider(
-              create: (context) => SongTileCubit(),
-            ),
-            BlocProvider(
-              create: (context) => FavBloc()..add(const Init()),
-            )
-          ],
-          child: const RootScreen(),
-        ),
+  navigatorKey: GetIt.I<NavigationService>().navigatorKey,
+  initialLocation: '/root',
+  routes: [
+    GoRoute(
+      name: 'root_screen',
+      path: '/root',
+      builder: (context, state) => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => RootCubit(),
+          ),
+          BlocProvider(
+            create: (_) => SettingCubit(),
+          ),
+          BlocProvider(
+            create: (context) => ScrollLoaderCubit(),
+          ),
+          BlocProvider(
+            create: (context) => SongTileCubit(),
+          ),
+          BlocProvider(
+            create: (context) => FavBloc()..add(const Init()),
+          )
+        ],
+        child: const RootScreen(),
       ),
-      //add new route accordingly
-    ]);
+    ),
+    //add new route accordingly
+  ],
+);

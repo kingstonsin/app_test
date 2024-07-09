@@ -9,19 +9,23 @@ part 'fetch_list_bloc.freezed.dart';
 
 class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
   FetchListBloc(
-    Future<List<T>> Function(int offset, int limit, String terms)
+    Future<List<T>> Function(int offset, int limit, String terms, String entity)
         futureFunction,
   ) : super(FetchListInitial()) {
     on<GetDataEvent>((event, emit) async {
       try {
         emit(FetchListLoading());
-        final data =
-            await futureFunction(event.offset, event.limit, event.terms);
-        emit(FetchListLoaded(
+        final data = await futureFunction(
+            event.offset, event.limit, event.terms, event.entity);
+        emit(
+          FetchListLoaded(
             data: data,
             offset: event.offset,
             limit: event.limit,
-            terms: event.terms));
+            terms: event.terms,
+            entity: event.entity,
+          ),
+        );
       } catch (err) {
         logE('Error caught on getDataEvent $err');
         emit(FetchListError(err));
@@ -30,8 +34,8 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
 
     on<LoadMoreEvent>((event, emit) async {
       try {
-        final data =
-            await futureFunction((event.offset + 20), event.limit, event.terms);
+        final data = await futureFunction(
+            (event.offset + 20), event.limit, event.terms, event.entity);
 
         if (data.isNotEmpty) {
           final newData = List<T>.from(event.data);
@@ -42,6 +46,7 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
               offset: (event.offset + 20),
               limit: event.limit,
               terms: event.terms,
+              entity: event.entity,
             ),
           );
         } else {
@@ -51,6 +56,7 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
               offset: (event.offset),
               limit: event.limit,
               terms: event.terms,
+              entity: event.entity,
             ),
           );
         }
@@ -64,10 +70,10 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
   }
   void onCreate() {
     /// initialize data
-    add(const GetDataEvent(offset: 20, limit: 20, terms: ''));
+    add(const GetDataEvent(offset: 0, limit: 20, terms: '', entity: ''));
   }
 
   void cleanCached() {
-    //TODO if needed
+    /// if needed
   }
 }

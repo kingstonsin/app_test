@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/utils/logger.dart';
 
 class DioService {
@@ -60,88 +58,18 @@ class DioService {
             }
           } catch (e) {
             logE("Error caught on Dio onResponse :$e");
-            //TODO extract
-            // showDialog(
-            //   context: globalContext,
-            //   builder: (BuildContext context) {
-            //     return Column(
-            //       children: [
-            //         Text(
-            //           l10n().fail,
-            //         ),
-            //         const SizedBox(
-            //           height: 10,
-            //         ),
-            //         Text(
-            //           l10n().connection_timeout,
-            //         )
-            //       ],
-            //     );
-            //   },
-            // );
+
             return handler.next(response);
           }
         },
         onError: (DioException e, handler) async {
           if (e.response?.statusCode != null) {
-            showDialog(
-              context: globalContext,
-              builder: (BuildContext context) {
-                return Column(
-                  children: [
-                    Text(
-                      l10n().fail,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      l10n().connection_timeout,
-                    )
-                  ],
-                );
-              },
-            );
-            // await statusCodeHandler(statusCode: e.response!.statusCode);
+            //error handling...
           } else if (e.type == DioExceptionType.unknown) {
-            showDialog(
-              context: globalContext,
-              builder: (BuildContext context) {
-                return Column(
-                  children: [
-                    Text(
-                      l10n().fail,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      l10n().connection_timeout,
-                    )
-                  ],
-                );
-              },
-            );
+            //error handling...
           } else {
             logE("Error caught on DioException: ${e.type}");
-            showDialog(
-              context: globalContext,
-              builder: (BuildContext context) {
-                return Column(
-                  children: [
-                    Text(
-                      l10n().fail,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      l10n().connection_timeout,
-                    )
-                  ],
-                );
-              },
-            );
+            //error handling...
           }
           return handler.next(e);
         },

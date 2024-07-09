@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/presentation/blocs/fav/fav_bloc.dart';
 import 'package:test_app/presentation/widgets/empty_list_widget.dart';
 import 'package:test_app/presentation/widgets/tiles/song_tile.dart';
+import 'package:test_app/utils/platform/scroll_utils.dart';
 
 class FavScreen extends StatelessWidget {
   const FavScreen({super.key});
@@ -14,6 +15,7 @@ class FavScreen extends StatelessWidget {
       builder: (context, state) {
         return state.favList!.isNotEmpty
             ? ListView.builder(
+                physics: defaultScrollBehaviour,
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
                   return SongTile(
@@ -28,7 +30,7 @@ class FavScreen extends StatelessWidget {
                 },
                 itemCount: state.favList!.length,
               )
-            : const EmptyListWIdget();
+            : const EmptyListWidget();
       },
     );
   }

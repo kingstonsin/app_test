@@ -1,7 +1,8 @@
 enum SettingStatus {
   init,
   onLanguage,
-  //TODO add other options
+
+  /// add other options
 }
 
 class SettingState {

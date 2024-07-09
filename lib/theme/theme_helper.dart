@@ -19,7 +19,7 @@ class ThemeHelper {
 
   /// Changes the app theme to [newTheme].
   void changeTheme(String newTheme) {
-    //TODO if needed
+    /// if needed
   }
 
   /// Returns the primary colors for the current theme.
@@ -93,7 +93,7 @@ class ThemeHelper {
 /// Class containing the supported text theme styles.
 class TextThemes {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
-        //TODO Text style design... if needed
+        /// Text style design... if needed
         bodyLarge: TextStyle(
           color: appTheme.textColor,
           fontSize: 16,
