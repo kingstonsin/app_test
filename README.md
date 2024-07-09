@@ -75,23 +75,22 @@ flutter run
 
 ## Implementation
 
-Paging, Load More, and Refresh
+## Paging, Load More, and Refresh
+
 The app uses a dynamic BLOC approach to handle paging, load more, and refresh functionality. The DynamicBloc class is responsible for managing the general fetch data and load more operations with parameters like offset and limit.
 When creating a specific BLOC for fetching iTunes records, the DynamicBloc is used, and a custom fetchData function is provided. This fetchData function is responsible for fetching the data from the iTunes Music API and returning the appropriate data model.
 This approach allows for reusability, as the DynamicBloc can be used across different UI components that require paging, load more, and refresh functionality. The only customization needed is the fetchData function, which is specific to the data source being used.
 
-Favorites
+## Favorites
 The app stores the user's favorite items locally using the shared_preferences package. When an item is added to the favorites list, it is saved to the shared preferences. When the app is launched, the favorites list is loaded from the shared preferences and displayed to the user. The app uses a FavoritesBloc to manage the state of the favorites list, and a FavoritesCubit to handle the UI-related state changes for favoriting/unfavoriting items.
 
-State Management
+## State Management
 The app uses a combination of BLOCs and Cubits for state management:
 
 - **BLOCs** are used for data-related state management, such as fetching data from the iTunes Music API and handling paging/load more functionality.
 - **Cubits** are used for UI-related state management, such as handling the state of the favorites list and updating the UI accordingly.
 
 The Favorites functionality uses a stream to sink data and subscribe in the FavoritesCubit for cross-UI editing purposes.
-
-Sure, here's the updated README with the code snippets added:
 
 ## Code Documentation
 
@@ -111,7 +110,7 @@ The bloc also provides the following states:
 
 The `FetchListBloc` is designed to be reusable for different types of data, as the `futureFunction` parameter is a generic function that can be customized for each use case.
 
-Code snippet for the `FetchListBloc`:
+Code snippet for  `FetchListBloc`:
 
 ```dart
 import 'package:flutter/foundation.dart';
@@ -144,7 +143,7 @@ The `handleScrollNotification` function is a helper function that can be used to
 
 The `ScrollLoaderCubit` is designed to be used in conjunction with a `NotificationListener` widget to detect the scrolling events.
 
-Code snippet `ScrollLoaderCubit`:
+Code snippet for `ScrollLoaderCubit`:
 
 ```dart
 import 'package:bloc/bloc.dart';
