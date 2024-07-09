@@ -183,5 +183,5 @@ bool handleScrollNotification(
 
 ## Let's Talk About It!
 
-If you've got any questions or just want to chat about this project, head on over to the [Discussions section](https://github.com/kingstonsin/spp_test/discussions). I'm happy to hang out and help however I can. Feel free to share your thoughts, ideas, or anything else you'd like to discuss. I'am all ears!
+If you've got any questions or just want to chat about this project, head on over to the [Discussions section](https://github.com/kingstonsin/app_test/discussions). I'm happy to hang out and help however I can. Feel free to share your thoughts, ideas, or anything else you'd like to discuss. I'am all ears!
 
