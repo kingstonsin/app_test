@@ -74,6 +74,6 @@ class FetchListBloc<T> extends Bloc<FetchListEvent, FetchListState<T>> {
   }
 
   void cleanCached() {
-    //TODO if needed
+    /// if needed
   }
 }

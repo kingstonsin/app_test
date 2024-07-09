@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/common/constant/image_constant.dart';
 import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/presentation/blocs/fav/fav_bloc.dart';
+import 'package:test_app/presentation/cubits/locale/locale_cubit.dart';
 import 'package:test_app/presentation/cubits/root/root_cubit.dart';
 import 'package:test_app/presentation/cubits/root/root_state.dart';
 import 'package:test_app/presentation/screens/root/dash_board_screen.dart';
@@ -20,28 +21,32 @@ class RootScreen extends StatefulWidget {
 class _RootScreenState extends State<RootScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RootCubit, RootState>(
+    return BlocBuilder<LocaleCubit, LocaleState>(
       builder: (context, state) {
-        return Scaffold(
-          resizeToAvoidBottomInset: true,
-          appBar: AppBar(
-            title: Text(
-              _getTitle(state.navbarItem),
-            ),
-          ),
-          bottomNavigationBar: _buildBottomNav(state: state),
-          body: _buildBody(state.navbarItem),
-        );
-      },
-      listener: (BuildContext context, RootState state) {
-        switch (state.navbarItem) {
-          case NavbarItem.dashboard:
-          case NavbarItem.favourite:
-            context.read<FavBloc>().add(const FetchData());
+        return BlocConsumer<RootCubit, RootState>(
+          builder: (context, state) {
+            return Scaffold(
+              resizeToAvoidBottomInset: true,
+              appBar: AppBar(
+                title: Text(
+                  _getTitle(state.navbarItem),
+                ),
+              ),
+              bottomNavigationBar: _buildBottomNav(state: state),
+              body: _buildBody(state.navbarItem),
+            );
+          },
+          listener: (BuildContext context, RootState state) {
+            switch (state.navbarItem) {
+              case NavbarItem.dashboard:
+              case NavbarItem.favourite:
+                context.read<FavBloc>().add(const FetchData());
 
-          case NavbarItem.setting:
-          default:
-        }
+              case NavbarItem.setting:
+              default:
+            }
+          },
+        );
       },
     );
   }
@@ -92,24 +97,8 @@ class _RootScreenState extends State<RootScreen> {
           l10n().setting: ImageConstant.navSetting,
         };
 
-        // final Map activeBottomMenuMap = {
-        //   l10n().home: ImageConstant.imgActiveHome,
-        //   l10n().clients: ImageConstant.imgActiveClients,
-        //   // l10n().allocate: ImageConstant.imageNotFound,
-        //   l10n().program: ImageConstant.imgActiveProgram,
-        //   l10n().coming_soon2: ImageConstant.imgProgram,
-        // };
-
         return BottomNavigationBarItem(
           label: bottomMenuMap.keys.toList()[index],
-          // activeIcon: Padding(
-          //   padding: const EdgeInsets.only(top: 10, bottom: 5),
-          //   child: CustomImageView(
-          //     height: 24,
-          //     width: 24,
-          //     imagePath: activeBottomMenuMap.values.toList()[index],
-          //   ),
-          // ),
           icon: Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 5),
             child: CustomImageView(

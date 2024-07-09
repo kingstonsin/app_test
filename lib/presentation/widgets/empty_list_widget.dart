@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:test_app/common/injection/get_it.dart';
 
 class EmptyListWidget extends StatelessWidget {
@@ -9,6 +9,7 @@ class EmptyListWidget extends StatelessWidget {
     return Center(
       child: Text(
         l10n().empty_data_desc,
+        style: const TextStyle().copyWith(color: Colors.black),
       ),
     );
   }

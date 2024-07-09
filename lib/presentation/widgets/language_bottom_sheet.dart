@@ -49,7 +49,6 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                //TODO color
                                 AppLocale.values[index].title,
                               ),
                               if (widget.currentLocale ==

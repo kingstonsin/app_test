@@ -7,12 +7,13 @@ import 'package:test_app/common/injection/get_it.dart';
 import 'package:test_app/presentation/blocs/dashboard/base/fetch_list_bloc.dart';
 import 'package:test_app/presentation/cubits/widgets/scroll_loader_cubit.dart';
 import 'package:test_app/presentation/cubits/widgets/scroll_loader_state.dart';
+import 'package:test_app/presentation/widgets/custom_error_widget.dart';
 import 'package:test_app/presentation/widgets/custom_search_bar.dart';
 import 'package:test_app/presentation/widgets/empty_list_widget.dart';
 import 'package:test_app/presentation/widgets/filter_widget.dart';
 import 'package:test_app/presentation/widgets/tiles/song_tile.dart';
 import 'package:test_app/theme/theme_helper.dart';
-import 'package:test_app/utils/logger.dart';
+import 'package:test_app/utils/platform/scroll_utils.dart';
 
 import '../../cubits/song tile/song_tile_cubit.dart';
 import '../../cubits/song tile/song_tile_state.dart';
@@ -55,7 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               }
 
               if (state is FetchListError) {
-                return const Text("There is an error"); //TODO l10n
+                return const CustomErrorWidget();
               }
 
               if (state is FetchListLoaded) {
@@ -117,9 +118,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                           );
                     },
-                    //  state.entity == ''
-                    //     ? MediaType.all
-                    //     :
                     selectedMediaType: MediaType.values
                         .firstWhere((e) => e.getParam == state.entity),
                   ),
@@ -167,32 +165,36 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     context.read<ScrollLoaderCubit>().onScrollEnd();
                   });
                 },
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return BlocBuilder<SongTileCubit, SongTileState>(
-                      builder: (context, songTileState) {
-                        final song = state.data[index];
+                child: state.data.isEmpty
+                    ? const EmptyListWidget()
+                    : ListView.builder(
+                        physics: defaultScrollBehaviour,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return BlocBuilder<SongTileCubit, SongTileState>(
+                            builder: (context, songTileState) {
+                              final song = state.data[index];
 
-                        return SongTile(
-                          song: state.data[index],
-                          isFavorite:
-                              context.read<SongTileCubit>().isFav(song: song),
-                          onFavoriteChanged: (bool value) {
-                            value
-                                ? context
+                              return SongTile(
+                                song: state.data[index],
+                                isFavorite: context
                                     .read<SongTileCubit>()
-                                    .onAddToFav(song: state.data[index])
-                                : context
-                                    .read<SongTileCubit>()
-                                    .onRemoveFav(song: state.data[index]);
-                          },
-                        );
-                      },
-                    );
-                  },
-                  itemCount: state.data.length,
-                ),
+                                    .isFav(song: song),
+                                onFavoriteChanged: (bool value) {
+                                  value
+                                      ? context
+                                          .read<SongTileCubit>()
+                                          .onAddToFav(song: state.data[index])
+                                      : context
+                                          .read<SongTileCubit>()
+                                          .onRemoveFav(song: state.data[index]);
+                                },
+                              );
+                            },
+                          );
+                        },
+                        itemCount: state.data.length,
+                      ),
               ),
             ),
           ),

@@ -9,9 +9,7 @@ class FetchListEvent<T> with _$FetchListEvent {
     required String entity,
   }) = GetDataEvent;
 
-  const factory FetchListEvent.loadMore(
-      //TODO add entity for filtering
-      {
+  const factory FetchListEvent.loadMore({
     required int offset,
     required int limit,
     required String terms,

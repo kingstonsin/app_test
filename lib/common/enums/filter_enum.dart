@@ -30,13 +30,13 @@ extension MediaTypeExtension on MediaType {
   String get getParam => switch (this) {
         MediaType.movie => 'movie',
         MediaType.podcast => 'podcast',
-        MediaType.music => 'musicVideo',
+        MediaType.music => 'musicTrack',
         MediaType.musicVideo => 'musicVideo',
         MediaType.audiobook => 'audiobook',
         MediaType.shortFilm => 'shortFilm',
         MediaType.tvShow => 'tvShow',
         MediaType.software => 'software',
-        MediaType.ebook => 'eBook',
+        MediaType.ebook => 'ebook',
         MediaType.all => '',
       };
 }

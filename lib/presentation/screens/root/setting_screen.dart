@@ -17,45 +17,50 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SettingCubit, SettingState>(
-      listener: (context, state) {
-        switch (state.settingStatus) {
-          case SettingStatus.onLanguage:
-            showModalBottomSheet(
-              context: globalContext,
-              builder: (context) => BlocBuilder<LocaleCubit, LocaleState>(
-                builder: (context, localeState) {
-                  return LanguageBottomSheet(
-                    currentLocale: localeState.locale!,
-                  );
-                },
-              ),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(5),
-                  topRight: Radius.circular(5),
-                ),
-              ),
-              clipBehavior: Clip.hardEdge,
-            );
-
-          default:
-        }
-      },
+    return BlocBuilder<LocaleCubit, LocaleState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SettingTiles(
-                title: l10n().language_setting_title,
-                subTitle: l10n().language_setting_decs,
-                onTap: () =>
-                    context.read<SettingCubit>().onTapOption(key: 'language'),
+        return BlocConsumer<SettingCubit, SettingState>(
+          listener: (context, state) {
+            switch (state.settingStatus) {
+              case SettingStatus.onLanguage:
+                showModalBottomSheet(
+                  context: globalContext,
+                  builder: (context) => BlocBuilder<LocaleCubit, LocaleState>(
+                    builder: (context, localeState) {
+                      return LanguageBottomSheet(
+                        currentLocale: localeState.locale!,
+                      );
+                    },
+                  ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(5),
+                      topRight: Radius.circular(5),
+                    ),
+                  ),
+                  clipBehavior: Clip.hardEdge,
+                );
+
+              default:
+            }
+          },
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SettingTiles(
+                    title: l10n().language_setting_title,
+                    subTitle: l10n().language_setting_decs,
+                    onTap: () => context
+                        .read<SettingCubit>()
+                        .onTapOption(key: 'language'),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         );
       },
     );
