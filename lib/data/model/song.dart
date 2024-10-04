@@ -22,6 +22,7 @@ class Song with _$Song {
     String? trackName,
     String? artworkUrl60,
     String? primaryGenreName,
+    String? previewUrl,
   }) = _Song;
 
   factory Song.fromJson(Map<String, Object?> json) => _$SongFromJson(json);

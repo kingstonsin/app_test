@@ -27,6 +27,7 @@ _$SongImpl _$$SongImplFromJson(Map<String, dynamic> json) => _$SongImpl(
       trackName: json['trackName'] as String?,
       artworkUrl60: json['artworkUrl60'] as String?,
       primaryGenreName: json['primaryGenreName'] as String?,
+      previewUrl: json['previewUrl'] as String?,
     );
 
 Map<String, dynamic> _$$SongImplToJson(_$SongImpl instance) =>
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$SongImplToJson(_$SongImpl instance) =>
       'trackName': instance.trackName,
       'artworkUrl60': instance.artworkUrl60,
       'primaryGenreName': instance.primaryGenreName,
+      'previewUrl': instance.previewUrl,
     };

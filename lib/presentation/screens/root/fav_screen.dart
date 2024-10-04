@@ -26,6 +26,11 @@ class FavScreen extends StatelessWidget {
                             song: state.favList![index],
                           ));
                     },
+                    isFavList: true,
+                    isPlaying: false,
+                    currentPlayedSong: '',
+                    onPlay: () {},
+                    onStop: () {},
                   );
                 },
                 itemCount: state.favList!.length,

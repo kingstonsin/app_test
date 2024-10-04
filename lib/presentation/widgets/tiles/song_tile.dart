@@ -7,12 +7,21 @@ class SongTile extends StatelessWidget {
   final Song song;
   final bool isFavorite;
   final ValueChanged<bool> onFavoriteChanged;
-
+  final bool isFavList;
+  final bool isPlaying;
+  final VoidCallback onPlay;
+  final VoidCallback onStop;
+  final String currentPlayedSong;
   const SongTile({
     super.key,
     required this.song,
     required this.isFavorite,
     required this.onFavoriteChanged,
+    required this.onPlay,
+    required this.onStop,
+    required this.isPlaying,
+    required this.isFavList,
+    required this.currentPlayedSong,
   });
 
   @override
@@ -41,17 +50,6 @@ class SongTile extends StatelessWidget {
               height: 60.0,
               fit: BoxFit.cover,
             ),
-
-            // if (song.artworkUrl60 != null)
-            //   ClipRRect(
-            //     borderRadius: BorderRadius.circular(8.0),
-            //     child: Image.network(
-            //       song.artworkUrl60!,
-            //       width: 60.0,
-            //       height: 60.0,
-            //       fit: BoxFit.cover,
-            //     ),
-            //   ),
             const SizedBox(width: 16.0),
             Expanded(
               child: Column(
@@ -92,6 +90,21 @@ class SongTile extends StatelessWidget {
                 onFavoriteChanged(!isFavorite);
               },
             ),
+            !isFavList
+                ? IconButton(
+                    icon: Icon(
+                      isPlaying && currentPlayedSong == song.previewUrl
+                          ? Icons.pause
+                          : Icons.play_arrow,
+                      color: isPlaying && currentPlayedSong == song.previewUrl
+                          ? Colors.green
+                          : Colors.blue,
+                    ),
+                    onPressed: isPlaying && currentPlayedSong == song.previewUrl
+                        ? onStop
+                        : onPlay,
+                  )
+                : const SizedBox(),
           ],
         ),
       ),

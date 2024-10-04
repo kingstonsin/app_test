@@ -189,6 +189,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                           .read<SongTileCubit>()
                                           .onRemoveFav(song: state.data[index]);
                                 },
+                                isPlaying: context
+                                    .read<SongTileCubit>()
+                                    .state
+                                    .isPlaying,
+                                currentPlayedSong: context
+                                    .read<SongTileCubit>()
+                                    .state
+                                    .currentPlayedSong,
+                                onPlay: () {
+                                  context
+                                      .read<SongTileCubit>()
+                                      .onPlayPreview(song: state.data[index]);
+                                },
+                                onStop: () {
+                                  context.read<SongTileCubit>().stopPreview();
+                                },
+                                isFavList: false,
                               );
                             },
                           );

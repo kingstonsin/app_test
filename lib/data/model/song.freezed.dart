@@ -186,6 +186,7 @@ mixin _$Song {
   String? get trackName => throw _privateConstructorUsedError;
   String? get artworkUrl60 => throw _privateConstructorUsedError;
   String? get primaryGenreName => throw _privateConstructorUsedError;
+  String? get previewUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -202,7 +203,8 @@ abstract class $SongCopyWith<$Res> {
       String? artistName,
       String? trackName,
       String? artworkUrl60,
-      String? primaryGenreName});
+      String? primaryGenreName,
+      String? previewUrl});
 }
 
 /// @nodoc
@@ -223,6 +225,7 @@ class _$SongCopyWithImpl<$Res, $Val extends Song>
     Object? trackName = freezed,
     Object? artworkUrl60 = freezed,
     Object? primaryGenreName = freezed,
+    Object? previewUrl = freezed,
   }) {
     return _then(_value.copyWith(
       wrapperType: freezed == wrapperType
@@ -245,6 +248,10 @@ class _$SongCopyWithImpl<$Res, $Val extends Song>
           ? _value.primaryGenreName
           : primaryGenreName // ignore: cast_nullable_to_non_nullable
               as String?,
+      previewUrl: freezed == previewUrl
+          ? _value.previewUrl
+          : previewUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -261,7 +268,8 @@ abstract class _$$SongImplCopyWith<$Res> implements $SongCopyWith<$Res> {
       String? artistName,
       String? trackName,
       String? artworkUrl60,
-      String? primaryGenreName});
+      String? primaryGenreName,
+      String? previewUrl});
 }
 
 /// @nodoc
@@ -279,6 +287,7 @@ class __$$SongImplCopyWithImpl<$Res>
     Object? trackName = freezed,
     Object? artworkUrl60 = freezed,
     Object? primaryGenreName = freezed,
+    Object? previewUrl = freezed,
   }) {
     return _then(_$SongImpl(
       wrapperType: freezed == wrapperType
@@ -301,6 +310,10 @@ class __$$SongImplCopyWithImpl<$Res>
           ? _value.primaryGenreName
           : primaryGenreName // ignore: cast_nullable_to_non_nullable
               as String?,
+      previewUrl: freezed == previewUrl
+          ? _value.previewUrl
+          : previewUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -313,7 +326,8 @@ class _$SongImpl implements _Song {
       this.artistName,
       this.trackName,
       this.artworkUrl60,
-      this.primaryGenreName});
+      this.primaryGenreName,
+      this.previewUrl});
 
   factory _$SongImpl.fromJson(Map<String, dynamic> json) =>
       _$$SongImplFromJson(json);
@@ -328,10 +342,12 @@ class _$SongImpl implements _Song {
   final String? artworkUrl60;
   @override
   final String? primaryGenreName;
+  @override
+  final String? previewUrl;
 
   @override
   String toString() {
-    return 'Song(wrapperType: $wrapperType, artistName: $artistName, trackName: $trackName, artworkUrl60: $artworkUrl60, primaryGenreName: $primaryGenreName)';
+    return 'Song(wrapperType: $wrapperType, artistName: $artistName, trackName: $trackName, artworkUrl60: $artworkUrl60, primaryGenreName: $primaryGenreName, previewUrl: $previewUrl)';
   }
 
   @override
@@ -348,13 +364,15 @@ class _$SongImpl implements _Song {
             (identical(other.artworkUrl60, artworkUrl60) ||
                 other.artworkUrl60 == artworkUrl60) &&
             (identical(other.primaryGenreName, primaryGenreName) ||
-                other.primaryGenreName == primaryGenreName));
+                other.primaryGenreName == primaryGenreName) &&
+            (identical(other.previewUrl, previewUrl) ||
+                other.previewUrl == previewUrl));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, wrapperType, artistName,
-      trackName, artworkUrl60, primaryGenreName);
+      trackName, artworkUrl60, primaryGenreName, previewUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -376,7 +394,8 @@ abstract class _Song implements Song {
       final String? artistName,
       final String? trackName,
       final String? artworkUrl60,
-      final String? primaryGenreName}) = _$SongImpl;
+      final String? primaryGenreName,
+      final String? previewUrl}) = _$SongImpl;
 
   factory _Song.fromJson(Map<String, dynamic> json) = _$SongImpl.fromJson;
 
@@ -390,6 +409,8 @@ abstract class _Song implements Song {
   String? get artworkUrl60;
   @override
   String? get primaryGenreName;
+  @override
+  String? get previewUrl;
   @override
   @JsonKey(ignore: true)
   _$$SongImplCopyWith<_$SongImpl> get copyWith =>
