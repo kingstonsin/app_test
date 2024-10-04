@@ -1,6 +1,7 @@
 # TestApp
 
 TestApp is a Flutter application that uses the BLOC state management pattern and follows the clean architecture principles. It integrates with the iTunes Music API to enable search, filtering, and adding items to a favorites list.
+![Screenshot_1728050750](https://github.com/user-attachments/assets/7eb6dc23-5024-4ba7-9fdc-7832ec04c814)
 
 ## Features
 
@@ -179,7 +180,8 @@ bool handleScrollNotification(
     return false;
 }
 ```
-
+## Update:
+updated sound track preview on 4/10/2024
 
 ## Let's Talk About It!
 
