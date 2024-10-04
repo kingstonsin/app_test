@@ -180,8 +180,8 @@ bool handleScrollNotification(
     return false;
 }
 ```
-## Update:
-updated sound track preview on 4/10/2024
+## Update
+ 4/10/2024: sound track preview
 
 ## Let's Talk About It!
 
