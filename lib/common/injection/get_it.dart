@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:test_app/data/local_storage/share_pref.dart';
 import 'package:test_app/data/repo/favList/fav_list_repo_imp.dart';
 import 'package:test_app/data/repo/songList/song_list_repo_imp.dart';
+import 'package:test_app/l10n/app_localizations.dart';
 import 'package:test_app/main.dart';
 import 'package:test_app/services/api/api_service.dart';
 import 'package:test_app/services/navigation/navigation_service.dart';
